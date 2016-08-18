@@ -1,0 +1,23 @@
+/*
+    Board stylesheet
+*/
+
+table#registration {
+    width: 100%;
+}
+
+table#registration tbody td{
+    cursor: pointer;
+    text-align: center;
+    color: green;
+    font-size: large;
+}
+
+table#registration tbody td img{
+    margin: 0 auto;
+}
+
+#board canvas{
+    display: block;
+    margin: 0 auto;
+}

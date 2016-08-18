@@ -1,0 +1,13 @@
+extends layout
+
+block content
+   script(type='text/javascript', src='/javascripts/player.js')
+   script(type='text/javascript').
+      var boardId = "#{boardId}";
+      var playerId = #{playerId};
+
+   h1 Player #{playerId}
+   h2 Rotation data
+   p
+      b beta:
+      span(id='beta') not supported

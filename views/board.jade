@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    link(rel='stylesheet', href='/stylesheets/board.css')
+    script(type='text/javascript', src='/javascripts/board.js')
+    script(type='text/javascript', src='/javascripts/processing.js')
+    script(type='text/javascript', src='/javascripts/qrcode.js')
+    h1= title
+    p Welcome to #{title}
+    table(id='registration')
+        thead
+            tr
+                th Player 1
+                th Player 2
+        tbody
+            tr
+                td(id='qrcodeP1')
+                td(id='qrcodeP2')
+            tr
+                td(id='scoreP1') 0
+                td(id='scoreP2') 0
+    #board
+        canvas(data-processing-sources='/javascripts/board.pde')
