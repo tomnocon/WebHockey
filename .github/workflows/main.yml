@@ -2,11 +2,19 @@ on:
   workflow_dispatch:
 
 jobs:
-  my_job:
-    name: deploy to staging
+  create_release:
+    name: Create deployment release
     runs-on: ubuntu-latest
     steps:
       - name: Set short sha 
         run: echo "SHORT_SHA=`echo ${GITHUB_SHA::7}`" >> $GITHUB_ENV
+      - name: Set release branch name 
+        run: echo "RELEASE_BRANCH=release-product-${SHORT_SHA}" >> $GITHUB_ENV
+      - name: Create release branch
+        uses: peterjgrainger/action-create-branch@v2.2.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          branch: ${{ env.RELEASE_BRANCH }}
       - name: Check outputs
-        run: echo ${SHORT_SHA}
+        run: echo ${SHORT_SHA} ${RELEASE_BRANCH}
